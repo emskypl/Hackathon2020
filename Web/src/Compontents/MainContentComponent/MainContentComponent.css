@@ -1,0 +1,17 @@
+
+
+.test1
+{
+    background-color: salmon;
+}
+
+
+.test2
+{
+    background-color: yellowgreen;
+}
+.img{
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}

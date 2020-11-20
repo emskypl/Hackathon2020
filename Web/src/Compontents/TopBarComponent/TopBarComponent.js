@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import './TopBarComponent.css';
+import LoginButtonComponent from '../LoginButtonComponent/LoginButtonComponent';
 import {
   Collapse,
   Navbar,
@@ -7,11 +10,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
 
 const TopBarComponent = (props) => {
@@ -21,39 +19,32 @@ const TopBarComponent = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
-        </Collapse>
-      </Navbar>
-    </div>
+      <Row>
+        <Col sm="12" md="12" lg="12" xl="12">
+        <Navbar light expand="md" className="NavBarContainer">
+          <Col className="Logo" sm="4" md="4" lg="4" xl="4">
+            <NavbarBrand href="/">P<b>o</b>int</NavbarBrand>
+          </Col >
+          <Col sm="6" md="6" lg="6" xl="6">
+              <Nav navbar>
+                <NavItem>
+                  <NavLink href="/components/">Informacje</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/components/">O nas</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/components/">Lorem3</NavLink>
+                </NavItem>
+              </Nav>
+            </Col>
+            <Col sm="12" md="12" lg="12" xl="12">
+              <LoginButtonComponent />
+            </Col>
+        </Navbar>
+        </Col>
+      </Row>
+    </div >
   );
 }
 
