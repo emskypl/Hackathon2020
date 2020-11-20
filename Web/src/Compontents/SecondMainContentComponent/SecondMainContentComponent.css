@@ -1,0 +1,15 @@
+.test1
+{
+    background-color: white;
+}
+
+.test2
+{
+    background-color: yellowgreen;
+}
+
+.img{
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
