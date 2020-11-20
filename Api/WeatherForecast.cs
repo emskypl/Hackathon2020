@@ -1,6 +1,6 @@
 using System;
 
-namespace Api
+namespace HackApi
 {
     public class WeatherForecast
     {
