@@ -38,7 +38,7 @@ const TopBarComponent = (props) => {
                 </NavItem>
               </Nav>
             </Col>
-            <Col sm="12" md="12" lg="12" xl="12">
+            <Col sm="2" md="2" lg="2" xl="2">
               <LoginButtonComponent />
             </Col>
         </Navbar>
