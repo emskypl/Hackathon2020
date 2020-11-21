@@ -1,0 +1,17 @@
+.ButtonLoginContainter{
+    border-radius: 0.2rem;
+    border: solid #5653FD 1px;
+    width: 10rem;
+    padding: 0.6rem;
+    font-weight: 500;
+    text-align: center;
+    color: #5653FD;
+}
+
+.ButtonLoginContainter:hover{
+    background-color: #2420F5;
+    color: white;
+    font-weight: 500;
+    transition: 0.4s;
+    cursor: pointer;
+}
