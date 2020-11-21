@@ -1,13 +1,12 @@
 import "./SecondMainContentComponentVer2.css";
 import React, { useState } from "react";
 import { Col, Row } from "reactstrap";
-import contentPhoto from "../../Images/geometry-1023846_1920.jpg";
-import contentPhoto2 from "../../Images/school-1019989_1920.jpg";
-import { render } from "react-dom";
-import Dots from "react-activity/lib/Dots";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import "react-activity/lib/Dots/Dots.css";
 import MeetingComponent from "../MeetingComponent/MeetingComponent";
 import UsersListComponent from "../UsersListComponent/UsersListComponent";
+import test from '../../Images/Screenshot_1.png'
+
 var tablica;
 
 var axios = require("axios");
@@ -73,12 +72,7 @@ class SecondMainContentComponentVer2 extends React.Component {
 
                         <Col sm="9" md="9" lg="9" xl="9">
                             <div className="oknoSpotkanie">
-                                <p className="StyledPragraph">
-                                    Oczekiwanie na rozpoczęcie spotkania:
-                                     </p>
-                                <p className="StyledPragraph">
-                                    Oczekiwanie na rozpoczęcie spotkania:
-                                        </p>
+                                <img src={test}/>
                             </div>
 
 
