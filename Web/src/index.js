@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import MainComponent from './Compontents/MainComponent/MainComponent';
-import LoginButtonComponent from './Compontents/LoginButtonComponent/LoginButtonComponent';
 import  'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
