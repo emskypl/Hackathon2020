@@ -8,7 +8,10 @@ class MeetingComponent extends React.Component {
     render() {
         return (
             <>
-                <Col className="ColMainContentComponent" onClick={() => this.props.czyUzupelnionePointy(this.props.meetId)}>
+                <Col className="ColMainContentComponent" onClick={() => {
+                    this.props.meetingClicked(this.props.id)
+                    console.log(this.props.id)
+                }}>
                     <div className={this.props.point == true ? "test11" : "test22"}>
                     <Col>
                         <Row className="FirstRowParagraphMainContentComponent">

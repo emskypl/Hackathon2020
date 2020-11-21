@@ -21,8 +21,8 @@ changestatus(e){
     console.log("test change" + JSON.stringify(e.target));
     this.setState(state => ({
         czyPoint: true,
-        text: e
-    
+        text: e,
+        selectedMeetingId: undefined
 
     }));
     
@@ -58,9 +58,13 @@ changestatus(e){
                             <Row>
 
                                 <>
-                                        {this.state.spotkania.map(spotkanie => <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} point={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
+                                    {this.state.spotkania.map(spotkanie => <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent meetingClicked={(meetingId) => {
+                                        this.setState({
+                                                selectedMeetingId: meetingId
+                                            })
+                                        }} spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} point={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
                                 </>
-
+                                        {this.state.selectedMeetingId}
                             </Row>
                         </Col>
                         <Col >
