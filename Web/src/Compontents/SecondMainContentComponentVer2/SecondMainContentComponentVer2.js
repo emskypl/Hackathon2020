@@ -99,7 +99,6 @@ class SecondMainContentComponentVer2 extends React.Component {
                         <Col sm="2" md="2" lg="2" xl="2">
                             {<UsersListComponent uzytkownicy={this.state.user} />}
                         </Col>
-                        {this.state.selectedMeetingId}
                     </Row>
                 </>
             );
