@@ -2,16 +2,29 @@ import TopBarcomponent from '../TopBarComponent/TopBarComponent'
 import React, { useState } from 'react';
 import MainContentComponent from '../MainContentComponent/MainContentComponent'
 import SecondMainContentComponent from '../SecondMainContentComponent/SecondMainContentComponent'
-var test = 2
+import SecondMainContentComponentVer2 from '../SecondMainContentComponentVer2/SecondMainContentComponent'
+
+var test = 1
 
 class MainComponent extends React.Component {
-    
+  constructor(props) {
+    super(props);
+    this.state = {czyGlownaStrona: true};
+  }
+
+  changestatus(){
+    console.log("test change")
+    this.setState(state => ({
+      czyGlownaStrona: false
+    }));
+  }
     render() {
-        if (test == 1) {
+     
+        if (this.state.czyGlownaStrona) {
             return (
                 <>
                     <TopBarcomponent/>
-                    <MainContentComponent/>
+                    <MainContentComponent metoda={() => this.changestatus()}/>
                 </>
             );
         }
@@ -19,12 +32,10 @@ class MainComponent extends React.Component {
             return (
                 <>
                     <TopBarcomponent/>
-                    <SecondMainContentComponent/>
+                    <SecondMainContentComponentVer2/>
                 </>
             );
         }
-        
-
     }
 }
 export default MainComponent
