@@ -2,7 +2,7 @@ import './MainContentComponent.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import LoginButtonComponent from '../LoginButtonComponent/LoginButtonComponent';
-import contentPhoto2 from '../../Images/school.jpg';
+import contentPhoto2 from '../../Images/school2.png';
 import microsoftAccount from '../../Images/mask.png'
 class MainContentComponent extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class MainContentComponent extends React.Component {
                 <Row className="RowMainContentComponent">
                     <Col className="test" sm="6" md="6" lg="6" xl="6">
                         <h1>Interaktywność</h1>
-                        <h2>Nauczanie | Planowanie | Skupienie</h2>
+                        <h2 className ="test123">Nauczanie | Planowanie | Skupienie</h2>
                         <p>Intuicyjna i przejrzysta aplikacja wspomagająca prowadzenie lekcji dzięki intergracji z Microsoft Teams.</p>
                         <LoginButtonComponent metoda={this.props.metoda}/>
                         <img className="imgMicrosoftAccount" src={microsoftAccount}></img>
