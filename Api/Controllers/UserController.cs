@@ -15,8 +15,8 @@ namespace HackApi.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet]
-        [Route("GetUserMeetings")]
-        public async Task<List<MeetInformation>> GetUserMeetings()
+        [Route("GetUserMeetings/{webApp}")]
+        public async Task<List<MeetInformation>> GetUserMeetings(bool webApp)
         {
             string bearerToken = string.Empty;
             var response = string.Empty;
@@ -27,7 +27,7 @@ namespace HackApi.Controllers
             {
                 using (HackathonContext db = new HackathonContext())
                 {
-                    bearerToken = db.MrkApiToken.First().Token;
+                    bearerToken = webApp ? db.MrkApiToken.First().Token : db.MrkApiTokenStudent.First().Token;
                 }
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
 
@@ -52,19 +52,18 @@ namespace HackApi.Controllers
         }
 
         [HttpGet]
-        [Route("CheckIsMeetingActiveAndGetUsers/{meetId}")]
-        public async Task<MeetingUsers> CheckIsMeetingActiveAndGetUsers(string meetId)
+        [Route("CheckIsMeetingActiveAndGetUsers/{meetId}/{webApp}")]
+        public async Task<MeetingUsers> CheckIsMeetingActiveAndGetUsers(string meetId, bool webApp)
         {
-            string bearerToken = string.Empty;
             var response = string.Empty;
             MeetingUsers meetingUsers = new MeetingUsers();
             using (var client = new HttpClient())
             {
                 using (HackathonContext db = new HackathonContext())
                 {
-                    bearerToken = db.MrkApiToken.First().Token;
+                    string bearerToken = webApp ? db.MrkApiToken.First().Token : db.MrkApiTokenStudent.First().Token;
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
                 }
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
 
                 HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0//me/events/" + meetId);
                 if (result.IsSuccessStatusCode)
