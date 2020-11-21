@@ -65,15 +65,19 @@ namespace HackApi.Controllers
                         response = await result.Content.ReadAsStringAsync();
                         var temperatures = JsonConvert.DeserializeObject<Temperatures>(response);
 
-                        foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled")))
+                        foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled") || x.Subject == "test"))
                         {
                             bool isCheckpointsExist = db.Checkpoints.Any(x => x.MeetingId == tem.Id);
+
+                            string startTime = DateTime.Parse(tem.Start.DateTime).ToString("MM/dd/yyyy HH:mm:ss");
+                            string endTime = DateTime.Parse(tem.End.DateTime).ToString("MM/dd/yyyy HH:mm:ss");
+
                             meetings.Add(new MeetInformation()
                             {
                                 MeetId = tem.Id,
                                 MeetSubject = tem.Subject,
-                                StartTime = tem.Start.DateTime,
-                                EndTime = tem.End.DateTime,
+                                StartTime = startTime,
+                                EndTime = endTime,
                                 IsCheckpointsExist = isCheckpointsExist
                             });
                         }
@@ -114,7 +118,6 @@ namespace HackApi.Controllers
                         string userId = userObject.id;
                         HttpResponseMessage photo = await client.GetAsync("https://graph.microsoft.com/v1.0/users/" + userId + "/photo/$value");
                         att.Photo = await photo.Content.ReadAsStringAsync();
-
                         listOfAttende.Add(att);
                     }
                     meetingUsers.attendees = listOfAttende;
