@@ -20,13 +20,14 @@ namespace HackApi.Database
         public virtual DbSet<Checkpoints> Checkpoints { get; set; }
         public virtual DbSet<Meetings> Meetings { get; set; }
         public virtual DbSet<MrkApiToken> MrkApiToken { get; set; }
+        public virtual DbSet<MrkApiTokenStudent> MrkApiTokenStudent { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=94.23.91.119;Initial Catalog=Hackathon;User Id=mnogaj;Password=kajak13;");
+                optionsBuilder.UseSqlServer("Server=94.23.91.119;Database=Hackathon;User Id=oszymanski;Password=oskar");
             }
         }
 
@@ -109,6 +110,13 @@ namespace HackApi.Database
                 entity.Property(e => e.Token)
                     .IsRequired()
                     .HasColumnType("text");
+            });
+
+            modelBuilder.Entity<MrkApiTokenStudent>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.Token).HasColumnType("text");
             });
 
             OnModelCreatingPartial(modelBuilder);
