@@ -7,7 +7,6 @@ class UsersListComponent extends React.Component {
         super(props);
     }
     render() {
-        console.log("render" + JSON.stringify(this.props.uzytkownicy))
         return (
             
             <>
