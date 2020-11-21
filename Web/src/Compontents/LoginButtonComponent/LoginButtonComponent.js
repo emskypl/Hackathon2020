@@ -1,5 +1,3 @@
-
-
 import './LoginButtonComponent.css'
 import React, { useState } from 'react';
 
@@ -10,7 +8,6 @@ class LoginButtonComponent extends React.Component {
                 Połącz z kontem Microsoft
             </div>
         );
-
     }
 }
 export default LoginButtonComponent

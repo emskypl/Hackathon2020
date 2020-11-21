@@ -1,6 +1,3 @@
-
-
-
 import './MainContentComponent.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
@@ -29,7 +26,6 @@ class MainContentComponent extends React.Component {
                 </Row>
             </>
         );
-
     }
 }
 export default MainContentComponent

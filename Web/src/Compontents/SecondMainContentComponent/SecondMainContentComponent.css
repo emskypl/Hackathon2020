@@ -1,4 +1,3 @@
-
 .img{
     overflow: hidden;
     background-size: cover;
@@ -6,6 +5,7 @@
 
     width: 85%;
 }
+
 .RowMainContentComponent
 {
     margin: 0 !important;
@@ -45,11 +45,4 @@ p
     text-align: left;
     font-size: 1.1rem;
     letter-spacing: 0.04px;
-}
-
-.imgMicrosoftAccount
-{
-    margin: 1rem;
-    margin-left: 6rem;
-    width: 20%;
 }
