@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -30,24 +31,32 @@ namespace HackApi.Controllers
                 using (HackathonContext db = new HackathonContext())
                 {
                     bearerToken = webApp ? db.MrkApiToken.First().Token : db.MrkApiTokenStudent.First().Token;
-                }
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
 
-                HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0/me/events");
-                //HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0//me/events/AAMkAGYwN2EyMTEwLTI1YTQtNDYzZC04Y2E3LTg4M2ZlMzkyMTY4YgBGAAAAAADAqOZAh5XmT5uUCZzwTgZnBwClIBnIR6xkQazNRRkdtxcUAAAAAAENAAClIBnIR6xkQazNRRkdtxcUAAFV_waLAAA=");
-                if (result.IsSuccessStatusCode)
-                {
-                    response = await result.Content.ReadAsStringAsync();
-                    var temperatures = JsonConvert.DeserializeObject<Temperatures>(response);
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
 
-                    foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled")))
+                    HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0/me/events");
+                    if (result.IsSuccessStatusCode)
                     {
-                        meetings.Add(new MeetInformation() { MeetId = tem.Id, MeetSubject = tem.Subject, StartTime = tem.Start.DateTime, EndTime = tem.End.DateTime });
+                        response = await result.Content.ReadAsStringAsync();
+                        var temperatures = JsonConvert.DeserializeObject<Temperatures>(response);
+
+                        foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled"))
+                        {
+                            bool isCheckpointsExist = db.Checkpoints.Any(x => x.MeetingId == tem.Id);
+                            meetings.Add(new MeetInformation()
+                            {
+                                MeetId = tem.Id,
+                                MeetSubject = tem.Subject,
+                                StartTime = tem.Start.DateTime,
+                                EndTime = tem.End.DateTime,
+                                IsCheckpointsExist = isCheckpointsExist
+                            });
+                        }
                     }
-                }
-                else
-                {
-                    response = "Fail \n" + result.StatusCode;
+                    else
+                    {
+                        response = "Fail \n" + result.StatusCode;
+                    }
                 }
             }
             return meetings;
@@ -80,6 +89,7 @@ namespace HackApi.Controllers
                         string userId = userObject.id;
                         HttpResponseMessage photo = await client.GetAsync("https://graph.microsoft.com/v1.0/users/" + userId + "/photo/$value");
                         att.Photo = await photo.Content.ReadAsStringAsync();
+
                         listOfAttende.Add(att);
                     }
                     meetingUsers.attendees = listOfAttende;
@@ -102,16 +112,17 @@ namespace HackApi.Controllers
 
             using (HackathonContext db = new HackathonContext())
             {
-                List<Checkpoints> checkpoints = db.Checkpoints.Include(x => x.CheckpointAnswer).Where(x => x.MeetingId == meetingId
-                                                                                                        && x.CreatedDate < DateTime.Now
-                                                                                                        && x.CheckpointAnswer.CheckpointAnswerId == 0
-                                                                                                        && x.UserMail == userMail).ToList();
+                List<Checkpoints> checkpoints = db.Checkpoints.Where(x => x.MeetingId == meetingId
+                                                                        && x.CreatedDate > DateTime.Now
+                                                                        && x.UserMail.ToLower() == userMail.ToLower()).ToList();
 
                 meetingCheckpoint.Checkpoints = checkpoints;
                 meetingCheckpoint.MeetingId = meetingId;
                 return meetingCheckpoint;
             }
         }
+
+
 
 
         [HttpPost]
@@ -183,8 +194,6 @@ namespace HackApi.Controllers
             }
         }
 
-        //[HttpGet]
-        //public async Task<>
 
     }
 }
