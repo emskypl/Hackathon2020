@@ -6,6 +6,9 @@ import LoginButtonComponent from '../LoginButtonComponent/LoginButtonComponent';
 import contentPhoto2 from '../../Images/school-1019989_1920.jpg';
 import microsoftAccount from '../../Images/Mask Group 1.png'
 class MainContentComponent extends React.Component {
+    constructor(props) {
+        super(props);
+      }
     render() {
         return (
             <>
@@ -17,7 +20,7 @@ class MainContentComponent extends React.Component {
                         commodo sit amet nunc. Fusce lectus libero, gravida vitae urna ac, mollis suscipit quam. Suspendisse sit
                         amet tortor facilisis, molestie tortor vitae, ultrices eros. Cras laoreet massa mauris, non eleifend risus
                              tristique non. Proin fringilla rutrum massa vel posuere. Nullam in nibh sollicitudin magna commodo faucibus</p>
-                        <LoginButtonComponent />
+                        <LoginButtonComponent metoda={this.props.metoda}/>
                         <img className="imgMicrosoftAccount" src={microsoftAccount}></img>
                     </Col>
                     <Col className="test2" sm="6" md="6" lg="6" xl="6">
