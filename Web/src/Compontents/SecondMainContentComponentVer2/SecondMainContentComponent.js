@@ -62,7 +62,7 @@ changestatus(e){
                                         this.setState({
                                                 selectedMeetingId: meetingId
                                             })
-                                        }} spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} point={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
+                                        }} spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} spotkanieCzyMaPunkty={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
                                 </>
                                         {this.state.selectedMeetingId}
                             </Row>

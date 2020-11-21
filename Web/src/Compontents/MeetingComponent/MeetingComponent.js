@@ -17,6 +17,10 @@ class MeetingComponent extends React.Component {
                         <Row className="FirstRowParagraphMainContentComponent">
                             <p>{this.props.spotkanieTemat} </p>
                         </Row>
+                        <div>
+                        
+                            <p className={this.props.spotkanieCzyMaPunkty===true ? "AddPointsButton" : "AddPointsButtonBlue"}> {this.props.spotkanieCzyMaPunkty===true ? "Punkty dodane" : "Dodaj point"}</p>
+                        </div>
                         <Row className="SecondRowParagraphMainContentComponent">
                             <p>{this.props.spotkanieStart}</p>
                         </Row>

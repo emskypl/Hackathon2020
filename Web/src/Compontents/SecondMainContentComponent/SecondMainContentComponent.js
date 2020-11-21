@@ -57,7 +57,7 @@ class SecondMainContentComponent extends React.Component {
         axios.get('http://94.23.91.119:5000/User/GetUserMeetings/true')
             .then(function (response) {
                 // handle success
-                tablica = response.data.map((spotkanie) => { return <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent spotkanieTemat={spotkanie.meetSubject} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} /></Col> })
+                tablica = response.data.map((spotkanie) => { return <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent spotkanieTemat={spotkanie.meetSubject} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} spotkanieCzyMaPunkty={spotkanie.isCheckpointsExist} /></Col> })
 
                 console.log(response.data);
                 console.log(tablica);

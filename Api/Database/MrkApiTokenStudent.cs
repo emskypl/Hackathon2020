@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HackApi
+namespace HackApi.Database
 {
-    public partial class MrkApiToken
+    public partial class MrkApiTokenStudent
     {
         public string Token { get; set; }
     }
