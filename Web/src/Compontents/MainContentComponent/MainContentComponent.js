@@ -1,7 +1,6 @@
 import './MainContentComponent.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
-import contentPhoto from '../../Images/geometry.jpg';
 import LoginButtonComponent from '../LoginButtonComponent/LoginButtonComponent';
 import contentPhoto2 from '../../Images/school.jpg';
 import microsoftAccount from '../../Images/mask.png'

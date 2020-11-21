@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import './TopBarComponent.css';
-import logo from '../../Images/point.png';
 import LoginButtonComponent from '../LoginButtonComponent/LoginButtonComponent';
 import logo from '../../Images/point.png';
 import {
