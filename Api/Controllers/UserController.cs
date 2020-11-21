@@ -2,6 +2,7 @@
 using HackApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,7 +17,6 @@ namespace HackApi.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-
         [HttpGet]
         [Route("GetUserMeetings")]
         public async Task<List<MeetInformation>> GetUserMeetings()
@@ -43,7 +43,7 @@ namespace HackApi.Controllers
 
                     foreach (var tem in temperatures.Value)
                     {
-                        meetings.Add(new MeetInformation() { MeetId = tem.Id, StartTime = tem.Start.DateTime, EndTime = tem.End.DateTime });
+                        meetings.Add(new MeetInformation() { MeetId = tem.Id, MeetSubject = tem.Subject, StartTime = tem.Start.DateTime, EndTime = tem.End.DateTime });
                     }
                 }
                 else
@@ -77,6 +77,11 @@ namespace HackApi.Controllers
                     List<Attendee> listOfAttende = new List<Attendee>();
                     foreach (var att in attendeeValue.Attendees)
                     {
+                        HttpResponseMessage resultByMail = await client.GetAsync("https://graph.microsoft.com/v1.0/users/" + att.EmailAddress.Address);
+                        dynamic userObject = JObject.Parse(await resultByMail.Content.ReadAsStringAsync());
+                        string userId = userObject.id;
+                        HttpResponseMessage photo = await client.GetAsync("https://graph.microsoft.com/v1.0/users/" + userId + "/photo/$value");
+                        att.Photo = await photo.Content.ReadAsStringAsync();
                         listOfAttende.Add(att);
                     }
                     meetingUsers.attendees = listOfAttende;
@@ -134,5 +139,30 @@ namespace HackApi.Controllers
                 db.SaveChanges();
             }
         }
+
+        [HttpPost]
+        [Route("InsertCheckpointAnswer/{checkpointId}/{checkpointAnswer}")]
+        public void InsertCheckpointAnswer(int checkpointId, string checkpointAnswer)
+        {
+            using (HackathonContext db = new HackathonContext())
+            {
+                db.CheckpointAnswer.Add(new CheckpointAnswer()
+                {
+                    CheckpointId = checkpointId,
+                    CheckpointAnswerBody = checkpointAnswer
+                });
+                db.SaveChanges();
+
+                Checkpoints checkpoints = db.Checkpoints.Where(x => x.CheckpointId == checkpointId).FirstOrDefault();
+                checkpoints.CheckpointAnswerId = db.CheckpointAnswer.FirstOrDefault(x => x.CheckpointId == checkpointId).CheckpointAnswerId;
+
+                db.Checkpoints.Update(checkpoints);
+                db.SaveChanges();
+            }
+        }
+
+        //[HttpGet]
+        //public async Task<>
+
     }
 }

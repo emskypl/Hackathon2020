@@ -11,6 +11,8 @@ namespace HackApi.Database
         }
 
         public int CheckpointAnswerId { get; set; }
+        public int CheckpointId { get; set; }
+        public string UserMail { get; set; }
         public string CheckpointAnswerBody { get; set; }
 
         public virtual ICollection<Checkpoints> Checkpoints { get; set; }

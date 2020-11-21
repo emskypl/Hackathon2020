@@ -34,11 +34,14 @@ namespace HackApi.Database
         {
             modelBuilder.Entity<CheckpointAnswer>(entity =>
             {
-                entity.Property(e => e.CheckpointAnswerId).ValueGeneratedNever();
-
                 entity.Property(e => e.CheckpointAnswerBody)
                     .IsRequired()
                     .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserMail)
+                    .IsRequired()
+                    .HasMaxLength(150)
                     .IsUnicode(false);
             });
 
@@ -55,7 +58,7 @@ namespace HackApi.Database
             modelBuilder.Entity<Checkpoints>(entity =>
             {
                 entity.HasKey(e => e.CheckpointId)
-                    .HasName("PK__Checkpoi__6C00DFE29606D4B3");
+                    .HasName("PK__Checkpoi__6C00DFE2092DDC04");
 
                 entity.Property(e => e.CheckpointAnswerOptions)
                     .HasMaxLength(100)
@@ -74,7 +77,7 @@ namespace HackApi.Database
                 entity.HasOne(d => d.CheckpointAnswer)
                     .WithMany(p => p.Checkpoints)
                     .HasForeignKey(d => d.CheckpointAnswerId)
-                    .HasConstraintName("PK_CheckpointAnswerId_CheckpointAnswer");
+                    .HasConstraintName("PK_CheckpointAnswerId_Checkpoints");
 
                 entity.HasOne(d => d.CheckpointType)
                     .WithMany(p => p.Checkpoints)

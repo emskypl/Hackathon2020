@@ -60,6 +60,7 @@ namespace HackApi
         public AttendeeType Type { get; set; }
         public Status Status { get; set; }
         public EmailAddress EmailAddress { get; set; }
+        public string Photo { get; set; }
     }
 
     public partial class EmailAddress
