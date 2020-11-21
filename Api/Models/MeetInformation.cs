@@ -9,5 +9,6 @@ namespace HackApi.Models
     {
         public string MeetId { get; set; }
         public string StartTime { get; set; }
+        public string EndTime { get; set; }
     }
 }
