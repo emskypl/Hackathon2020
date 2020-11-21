@@ -2,7 +2,7 @@ import TopBarcomponent from '../TopBarComponent/TopBarComponent'
 import React, { useState } from 'react';
 import MainContentComponent from '../MainContentComponent/MainContentComponent'
 import SecondMainContentComponent from '../SecondMainContentComponent/SecondMainContentComponent'
-import SecondMainContentComponentVer2 from '../SecondMainContentComponentVer2/SecondMainContentComponent'
+import SecondMainContentComponentVer2 from '../SecondMainContentComponentVer2/SecondMainContentComponentVer2'
 
 var test = 1
 
