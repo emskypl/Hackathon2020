@@ -1,8 +1,10 @@
 .img{
+    position: absolute;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    width: 85%;
+    width: 100%;
+    height: 98vh;
 }
 
 .RowMainContentComponent
@@ -32,7 +34,7 @@ h1
 
 h2
 {
-    color: #FF135D;
+    color: #5653FD;
     text-transform: uppercase !important;
     font-weight: 700 !important;
     font-size: 1.8rem !important;
