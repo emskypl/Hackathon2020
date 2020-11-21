@@ -1,8 +1,8 @@
 import './SecondMainContentComponentVer2.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
-import contentPhoto from '../../Images/geometry-1023846_1920.jpg';
-import contentPhoto2 from '../../Images/school-1019989_1920.jpg';
+import contentPhoto from '../../Images/geometry.jpg';
+import contentPhoto2 from '../../Images/school.jpg';
 import { render } from 'react-dom';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
