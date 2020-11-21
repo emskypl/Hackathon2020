@@ -16,7 +16,7 @@ class MainContentComponent extends React.Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mauris urna, congue non facilisis eget,
                         commodo sit amet nunc. Fusce lectus libero, gravida vitae urna ac, mollis suscipit quam. Suspendisse sit
                         amet tortor facilisis, molestie tortor vitae, ultrices eros. Cras laoreet massa mauris, non eleifend risus
-                             tristique non. Proin fringilla rutrum massa vel posuere. Nullam in nibh sollicitudin magna commodo faucibus</p>
+                        tristique non. Proin fringilla rutrum massa vel posuere. Nullam in nibh sollicitudin magna commodo faucibus</p>
                         <LoginButtonComponent />
                         <img className="imgMicrosoftAccount" src={microsoftAccount}></img>
                     </Col>
