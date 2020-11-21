@@ -1,0 +1,22 @@
+
+.NavBarContainer
+{
+    background-color: white !important;
+}
+
+.TabContainer
+{
+    align-items: center;
+}
+
+.nav-link
+{
+    color: #616161 !important;
+    font-weight: 600;
+}
+
+.nav-item
+{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
