@@ -5,12 +5,24 @@ import SecondMainContentComponent from '../SecondMainContentComponent/SecondMain
 var test = 1
 
 class MainComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {czyGlownaStrona: true};
+  }
+
+  changestatus(){
+    console.log("test change")
+    this.setState(state => ({
+      czyGlownaStrona: false
+    }));
+  }
     render() {
-        if (test == 1) {
+     
+        if (this.state.czyGlownaStrona) {
             return (
                 <>
                     <TopBarcomponent/>
-                    <MainContentComponent/>
+                    <MainContentComponent metoda={() => this.changestatus()}/>
                 </>
             );
         }
