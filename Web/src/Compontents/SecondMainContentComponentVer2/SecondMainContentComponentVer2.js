@@ -15,17 +15,16 @@ var axios = require('axios');
 class SecondMainContentComponentVer2 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { spotkania: [], czyPoint: true, text:"" };
+        this.state = { user: [], spotkania: [], czyPoint: true, text:"", selectedMeetingId: undefined, };
     }
-changestatus(e){
-    console.log("test change" + JSON.stringify(e.target));
-    this.setState(state => ({
-        czyPoint: true,
-        text: e,
-        selectedMeetingId: undefined
-
-    }));
-    
+    meetingClicked(id){
+    console.log("test change" + this.state.selectedMeetingId);
+    axios.get('http://94.23.91.119:5000/User/CheckIsMeetingActiveAndGetUsers/'+id+'/true')
+    .then(res => {
+        const user = res.data;
+        this.setState({ user: user.attendees });
+        console.log(user.attendees)
+    })
 }
     componentDidMount() {
         axios.get('http://94.23.91.119:5000/user/GetUserMeetings/true')
@@ -58,17 +57,18 @@ changestatus(e){
                             <Row>
 
                                 <>
-                                    {this.state.spotkania.map(spotkanie => <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent meetingClicked={(meetingId) => {
+                                    {this.state.spotkania.map(spotkanie => <Col sm="4" md="4" lg="4" xl="4"><MeetingComponent  meetingClicked={(meetingId) => {
                                         this.setState({
                                                 selectedMeetingId: meetingId
                                             })
+                                            this.meetingClicked(meetingId)
                                         }} spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} point={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
                                 </>
                                         {this.state.selectedMeetingId}
                             </Row>
                         </Col>
                         <Col >
-                            <UsersListComponent />
+                            <UsersListComponent uzytkownicy={this.state.user.attendees} />
                         </Col>
                     </Row>
 

@@ -6,6 +6,7 @@ class UsersListComponent extends React.Component {
         super(props);
     }
     render() {
+        console.log("render" + this.props.uzytkownicy)
         return (
             <>
                 <Row className="">
@@ -17,6 +18,9 @@ class UsersListComponent extends React.Component {
                                 </Col>
                                 <Col sm="12" md="12" lg="12" xl="12">
                                     <p className="PSpotkanieDrugie">Oczekiwanie na uczestników spotkania</p>
+                                </Col>
+                                <Col>
+                                {this.props.uzytkownicy.map(spotkanie => <ul>test</ul>)}
                                 </Col>
                             </Row>
                         </div>
