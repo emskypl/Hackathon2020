@@ -30,7 +30,7 @@ class MainComponent extends React.Component {
             return (
                 <>
                     <TopBarcomponent/>
-                    <SecondMainContentComponent/>
+                    <SecondMainContentComponent czyLadowacStrone={this.state.czyGlownaStrona}/>
                 </>
             );
         }
