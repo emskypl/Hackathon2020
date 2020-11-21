@@ -1,6 +1,3 @@
-
-
-
 import './SecondMainContentComponent.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';

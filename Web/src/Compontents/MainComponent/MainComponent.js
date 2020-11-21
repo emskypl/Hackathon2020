@@ -1,13 +1,11 @@
 import TopBarcomponent from '../TopBarComponent/TopBarComponent'
 import React, { useState } from 'react';
 import MainContentComponent from '../MainContentComponent/MainContentComponent'
-
 import SecondMainContentComponent from '../SecondMainContentComponent/SecondMainContentComponent'
 var test = 2
 
 class MainComponent extends React.Component {
     render() {
-
         if (test == 1) {
             return (
                 <>
@@ -24,7 +22,6 @@ class MainComponent extends React.Component {
                 </>
             );
         }
-        
     }
 }
 export default MainComponent
