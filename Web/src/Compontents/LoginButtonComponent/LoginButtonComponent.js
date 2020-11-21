@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 class LoginButtonComponent extends React.Component {
     render() {
         return (
-            <div className="ButtonLoginContainter">
-                Zaloguj
+            <div className="ButtonLogin">
+                Połącz z kontem Microsoft
             </div>
         );
     }
