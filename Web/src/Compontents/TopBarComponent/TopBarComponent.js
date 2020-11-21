@@ -23,12 +23,12 @@ const TopBarComponent = (props) => {
         <Col sm="12" md="12" lg="12" xl="12">
         <Navbar light expand="md" className="NavBarContainer">
           <Col className="Logo" sm="4" md="4" lg="4" xl="4">
-            <NavbarBrand href="/">P<b>o</b>int</NavbarBrand>
-          </Col >
+            <NavbarBrand href="/"><b>Point</b></NavbarBrand>
+          </Col>
         </Navbar>
         </Col>
       </Row>
-    </div >
+    </div>
   );
 }
 

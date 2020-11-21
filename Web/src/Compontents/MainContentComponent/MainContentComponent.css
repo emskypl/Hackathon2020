@@ -2,7 +2,6 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
-
     width: 85%;
 }
 
@@ -25,18 +24,18 @@
 
 h1
 {
-  color: #2B2B2B;
-text-transform: uppercase !important;
-font-weight: 700 !important;
-font-size: 5rem !important;
+    color: #2B2B2B;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 5rem !important;
 }
 
 h2
 {
     color: #FF135D;
-  text-transform: uppercase !important;
-  font-weight: 700 !important;
-  font-size: 1.95rem !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 1.95rem !important;
 }
 
 p
