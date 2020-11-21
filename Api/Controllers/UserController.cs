@@ -49,7 +49,6 @@ namespace HackApi.Controllers
                 {
                     response = "Fail \n" + result.StatusCode;
                 }
-
             }
             return meetings;
         }
@@ -77,7 +76,7 @@ namespace HackApi.Controllers
                     List<Attendee> listOfAttende = new List<Attendee>();
                     foreach (var att in attendeeValue.Attendees)
                     {
-                        listOfAttende.Add(att);                   
+                        listOfAttende.Add(att);
                     }
                     meetingUsers.attendees = listOfAttende;
                     meetingUsers.organizer = attendeeValue.Organizer;
