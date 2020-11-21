@@ -8,16 +8,23 @@ class MeetingComponent extends React.Component {
     render() {
         return (
             <>
-                <Col className="ColMainContentComponent">
-                    <div className="ContainterMeetingComponent">
+                <Col className="ColMainContentComponent" onClick={() => {
+                    this.props.meetingClicked(this.props.id)
+                    console.log(this.props.id)
+                }}>
+                    <div className={this.props.point == true ? "test11" : "test22"}>
+                    <Col>
                         <Row className="FirstRowParagraphMainContentComponent">
-                            <p>{this.props.spotkanieTemat}</p>
+                            <p>{this.props.spotkanieTemat} </p>
                         </Row>
                         <Row className="SecondRowParagraphMainContentComponent">
                             <p>{this.props.spotkanieStart}</p>
                         </Row>
+                    </Col>
                     </div>
                 </Col>
+                
+
             </>
         );
     }

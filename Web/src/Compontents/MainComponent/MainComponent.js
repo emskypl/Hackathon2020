@@ -2,6 +2,8 @@ import TopBarcomponent from '../TopBarComponent/TopBarComponent'
 import React, { useState } from 'react';
 import MainContentComponent from '../MainContentComponent/MainContentComponent'
 import SecondMainContentComponent from '../SecondMainContentComponent/SecondMainContentComponent'
+import SecondMainContentComponentVer2 from '../SecondMainContentComponentVer2/SecondMainContentComponent'
+
 var test = 1
 
 class MainComponent extends React.Component {
@@ -30,7 +32,7 @@ class MainComponent extends React.Component {
             return (
                 <>
                     <TopBarcomponent/>
-                    <SecondMainContentComponent czyLadowacStrone={this.state.czyGlownaStrona}/>
+                    <SecondMainContentComponentVer2/>
                 </>
             );
         }

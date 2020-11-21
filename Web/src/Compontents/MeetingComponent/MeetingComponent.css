@@ -1,8 +1,17 @@
 
-
-.ColMainContentComponent{
+.ColMainContentComponent:hover{
+    cursor: pointer;
+}
+.test11{
     border: solid #5653FD 0.13rem;
     border-radius: 0.6rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.test22{
+    border: solid red 0.13rem;
+    border-radius: 0.6rem;
+
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -10,13 +19,13 @@
 .FirstRowParagraphMainContentComponent{
     padding-top: 0.6rem;
     padding-bottom: 0;
-    padding-left: 1rem;
+    padding-left: 2rem;
 }
 
 .SecondRowParagraphMainContentComponent{
     padding-top: 0;
     padding-bottom: 0.6rem;;
-    padding-left: 1rem;
+    padding-left: 2rem;
 }
 p{
     margin: 0 !important;
