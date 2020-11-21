@@ -18,6 +18,31 @@ namespace HackApi.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet]
+        [Route("test/{webApp}")]
+        public async Task<string> Test(bool webApp)
+        {
+            string bearerToken = string.Empty;
+            var response = string.Empty;
+            using (var client = new HttpClient())
+            {
+                using (HackathonContext db = new HackathonContext())
+                {
+                    bearerToken = webApp ? db.MrkApiToken.First().Token : db.MrkApiTokenStudent.First().Token;
+
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
+
+                    HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0/reports/getTeamsUserActivityUserDetail(period='D30')");
+                    response = await result.Content.ReadAsStringAsync();
+
+                    return response;
+
+                }
+            }
+        }
+
+
+
+        [HttpGet]
         [Route("GetUserMeetings/{webApp}")]
         public async Task<List<MeetInformation>> GetUserMeetings(bool webApp)
         {
@@ -40,7 +65,7 @@ namespace HackApi.Controllers
                         response = await result.Content.ReadAsStringAsync();
                         var temperatures = JsonConvert.DeserializeObject<Temperatures>(response);
 
-                        foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled"))
+                        foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled")))
                         {
                             bool isCheckpointsExist = db.Checkpoints.Any(x => x.MeetingId == tem.Id);
                             meetings.Add(new MeetInformation()
@@ -114,7 +139,8 @@ namespace HackApi.Controllers
             {
                 List<Checkpoints> checkpoints = db.Checkpoints.Where(x => x.MeetingId == meetingId
                                                                         && x.CreatedDate > DateTime.Now
-                                                                        && x.UserMail.ToLower() == userMail.ToLower()).ToList();
+                                                                        && x.UserMail.ToLower() == userMail.ToLower()
+                                                                        && x.CheckpointIsEnded == false).ToList();
 
                 meetingCheckpoint.Checkpoints = checkpoints;
                 meetingCheckpoint.MeetingId = meetingId;
@@ -122,6 +148,18 @@ namespace HackApi.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("UpdateIsCheckpointEnded/{checkpointId}")]
+        public void UpdateIsCheckpointEnded(int checkpointId)
+        {
+            using (HackathonContext db = new HackathonContext())
+            {
+                Checkpoints checkpoints = db.Checkpoints.Where(x => x.CheckpointId == checkpointId).FirstOrDefault();
+                checkpoints.CheckpointIsEnded = true;
+                db.Checkpoints.Update(checkpoints);
+                db.SaveChanges();
+            }
+        }
 
 
 
@@ -193,7 +231,5 @@ namespace HackApi.Controllers
                 db.SaveChanges();
             }
         }
-
-
     }
 }
