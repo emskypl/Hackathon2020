@@ -1,4 +1,5 @@
-﻿using HackApi.Models;
+﻿using HackApi.Database;
+using HackApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -88,9 +89,50 @@ namespace HackApi.Controllers
             }
             return meetingUsers;
         }
-        //[HttpPost]
-        //[Route("")]
-        //public async Task
 
+        [HttpPost]
+        [Route("InsertNewCheckpoint/{meetingId}/{checkpointTitle}/{checkpointTypeId}/{checkpointAnswerOptions}")]
+        public void InsertNewCheckpoint(string meetingId, string checkpointTitle, int checkpointTypeId, string checkpointAnswerOptions = null)
+        {
+            using (HackathonContext db = new HackathonContext())
+            {
+                if (!db.Meetings.Any(x => x.MeetingId == meetingId))
+                {
+                    db.Meetings.Add(new Meetings()
+                    {
+                        MeetingId = meetingId
+                    });
+                    db.SaveChanges();
+                }
+
+                if (db.Checkpoints.Any(x => x.MeetingId == meetingId))
+                {
+                    int numberOfCheckpoints = db.Checkpoints.Where(x => x.MeetingId == meetingId).Count();
+                    db.Checkpoints.Add(new Checkpoints()
+                    {
+                        MeetingId = meetingId,
+                        CheckpointIsEnded = false,
+                        CheckpointAnswerOptions = checkpointTypeId == 1 ? checkpointAnswerOptions : "",
+                        CheckpointOrdinalNumber = numberOfCheckpoints + 1,
+                        CheckpointTitle = checkpointTitle,
+                        CheckpointTypeId = checkpointTypeId
+                    });
+                }
+                else
+                {
+                    db.Checkpoints.Add(new Checkpoints()
+                    {
+                        MeetingId = meetingId,
+                        CheckpointIsEnded = false,
+                        CheckpointAnswerOptions = checkpointTypeId == 1 ? checkpointAnswerOptions : "",
+                        CheckpointOrdinalNumber = 0,
+                        CheckpointTitle = checkpointTitle,
+                        CheckpointTypeId = checkpointTypeId
+                    });
+
+                }
+                db.SaveChanges();
+            }
+        }
     }
 }

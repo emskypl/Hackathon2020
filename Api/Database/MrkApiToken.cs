@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HackApi
+namespace HackApi.Database
 {
     public partial class MrkApiToken
     {
