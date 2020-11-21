@@ -18,16 +18,28 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
-        <Image style={{width: 120, marginTop: 20, position: 'absolute',top: -250, left:-200,width: 800}} source={require('../img/loginbg.png')}></Image>
-        <Text style={[{ marginTop: 20, fontSize: 60}]}>
-          Point
-        </Text>
-        <Text
+      <SafeAreaView style={{flex: 1, alignItems: 'center'}}>
+        <Image
+          style={{
+            marginTop: 20,
+            position: 'absolute',
+            top: 0,
+            resizeMode: 'contain',
+            height: 800,
+          }}
+          source={require('../img/loginbg.png')}></Image>
+        <Image
           style={[
-            {marginTop: 20},
-            iOSUIKit.largeTitleEmphasized,
-          ]}>
+            iOSUIKit.title3Emphasized,
+            {
+              marginLeft: -5,
+              marginTop: 20,
+              height: 50,
+              resizeMode: 'contain',
+            },
+          ]}
+          source={require('../img/point.png')}></Image>
+        <Text style={[{marginTop: 20}, iOSUIKit.largeTitleEmphasized]}>
           INNY TEKST
         </Text>
         <Text
@@ -42,15 +54,37 @@ export default class LoginScreen extends React.Component {
             iOSUIKit.caption2,
             {margin: 40, marginTop: 20, lineHeight: 25, textAlign: 'center'},
           ]}>
-          unlimited access to the thousands of online videos {'\n'} and 24*7 support
-          lorem ipusm doller sit with lazy dog jumps {'\n'} over the fox. unlimited
-          access to the thousands {'\n'} of online videos and 24*7 support lorem ipusm
-          doller sit with lazy dog jumps over the fox.
+          unlimited access to the thousands of online videos {'\n'} and 24*7
+          support lorem ipusm doller sit with lazy dog jumps {'\n'} over the
+          fox. unlimited access to the thousands {'\n'} of online videos and
+          24*7 support lorem ipusm doller sit with lazy dog jumps over the fox.
         </Text>
-        <Button style={{backgroundColor: '#5653FD', width: 280,marginLeft: 45,height: 50}}>
-          <Text style={[iOSUIKit.body, {color:'white',textAlign:'center', marginLeft: 10,fontWeight:'bold'}]}>Połącz z Microsoft Teams</Text>
+        <Button
+          onPress={() => {
+            console.log(this.props.route.params.logCallback());
+          }}
+          style={{
+            backgroundColor: '#5653FD',
+            width: 280,
+            marginLeft: 45,
+            height: 50,
+          }}>
+          <Text
+            style={[
+              iOSUIKit.body,
+              {
+                color: 'white',
+                textAlign: 'center',
+                marginLeft: 20,
+                fontWeight: 'bold',
+              },
+            ]}>
+            Połącz z Microsoft Teams
+          </Text>
         </Button>
-        <Image style={{width: 150, marginTop: 10,resizeMode: 'contain'}} source={require('../img/msteams.png')}></Image>
+        <Image
+          style={{width: 150, marginTop: 10, resizeMode: 'contain'}}
+          source={require('../img/msteams.png')}></Image>
       </SafeAreaView>
     );
   }
