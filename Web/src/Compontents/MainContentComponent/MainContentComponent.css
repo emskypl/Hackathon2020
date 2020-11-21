@@ -11,28 +11,36 @@
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .test
 {
     padding:12rem !important;
 }
+
 .test2
 {
     margin: 0;
     padding:0;
 }
-h1{
+
+h1
+{
   color: #2B2B2B;
 text-transform: uppercase !important;
 font-weight: 700 !important;
 font-size: 5rem !important;
 }
-h2{
+
+h2
+{
     color: #FF135D;
   text-transform: uppercase !important;
   font-weight: 700 !important;
   font-size: 1.95rem !important;
-  }
-p{
+}
+
+p
+{
     color: #2B2B2B;
     text-align: left;
     font-size: 1.1rem;
