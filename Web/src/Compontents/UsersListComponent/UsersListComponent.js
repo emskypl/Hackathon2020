@@ -6,7 +6,6 @@ class UsersListComponent extends React.Component {
         super(props);
     }
     render() {
-        console.log("render" + this.props.uzytkownicy)
         return (
             <>
                 <Row className="">

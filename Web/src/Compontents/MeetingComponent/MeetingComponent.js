@@ -10,7 +10,6 @@ class MeetingComponent extends React.Component {
             <>
                 <Col className="ColMainContentComponent" onClick={() => {
                     this.props.meetingClicked(this.props.id)
-                    console.log(this.props.id)
                 }}>
                     <div className={this.props.point == true ? "test11" : "test22"}>
                     <Col>
