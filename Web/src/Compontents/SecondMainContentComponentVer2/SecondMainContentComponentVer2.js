@@ -64,11 +64,10 @@ class SecondMainContentComponentVer2 extends React.Component {
                                             this.meetingClicked(meetingId)
                                         }} spotkanieTemat={spotkanie.meetSubject} id={spotkanie.meetId} spotkanieStart={spotkanie.startTime} spotkanieKoniec={spotkanie.endTime} point={spotkanie.isCheckpointsExist} czyUzupelnionePointy={(e) => this.changestatus(e)}/></Col>)}
                                 </>
-                                        {this.state.selectedMeetingId}
                             </Row>
                         </Col>
                         <Col >
-                            {this.state.user != undefined ? <UsersListComponent uzytkownicy={this.state.user} /> : <></>}
+                            {<UsersListComponent uzytkownicy={this.state.user} />}
                         </Col>
                     </Row>
 

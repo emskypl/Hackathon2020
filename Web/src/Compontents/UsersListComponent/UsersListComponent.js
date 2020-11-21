@@ -1,13 +1,15 @@
 import './UsersListComponent.css'
 import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
+import UserComponent from '../UserComponent/UserComponent';
 class UsersListComponent extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        console.log("render" + this.props.uzytkownicy)
+        console.log("render" + JSON.stringify(this.props.uzytkownicy))
         return (
+            
             <>
                 <Row className="">
                     <Col className="" sm="3" md="3" lg="3" xl="3">
@@ -20,7 +22,7 @@ class UsersListComponent extends React.Component {
                                     <p className="PSpotkanieDrugie">Oczekiwanie na uczestników spotkania</p>
                                 </Col>
                                 <Col>
-                                {this.props.uzytkownicy.map(spotkanie => <ul>test</ul>)}
+                                {this.props.uzytkownicy != undefined ? this.props.uzytkownicy.map(spotkanie => <Col><UserComponent name={spotkanie.emailAddress.name}/></Col>):<></>}
                                 </Col>
                             </Row>
                         </div>
