@@ -23,28 +23,12 @@ const TopBarComponent = (props) => {
         <Col sm="12" md="12" lg="12" xl="12">
         <Navbar light expand="md" className="NavBarContainer">
           <Col className="Logo" sm="4" md="4" lg="4" xl="4">
-            <NavbarBrand href="/">P<b>o</b>int</NavbarBrand>
-          </Col >
-          <Col sm="6" md="6" lg="6" xl="6">
-              <Nav navbar>
-                <NavItem>
-                  <NavLink href="/components/">Informacje</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/components/">O nas</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/components/">Lorem3</NavLink>
-                </NavItem>
-              </Nav>
-            </Col>
-            <Col sm="2" md="2" lg="2" xl="2">
-              <LoginButtonComponent />
-            </Col>
+            <NavbarBrand href="/"><b>Point</b></NavbarBrand>
+          </Col>
         </Navbar>
         </Col>
       </Row>
-    </div >
+    </div>
   );
 }
 
