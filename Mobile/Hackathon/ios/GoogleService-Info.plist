@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>827749275840-5f0dodbmpel3l99tl2h34or09v6puj8l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.827749275840-5f0dodbmpel3l99tl2h34or09v6puj8l</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCdwGDC4REFrpxzb0WNjB8d6qI5Y7PRpv8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>827749275840</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.Hackathon</string>
+	<key>PROJECT_ID</key>
+	<string>hackathon2020-6664e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hackathon2020-6664e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:827749275840:ios:168292231c85826ab9b525</string>
+	<key>DATABASE_URL</key>
+	<string>https://hackathon2020-6664e.firebaseio.com</string>
+</dict>
+</plist>
