@@ -71,7 +71,7 @@ class SecondMainContentComponentVer2 extends React.Component {
                 <>
                     <Row>
 
-                        <Col sm="8" md="8" lg="8" xl="8">
+                        <Col sm="9" md="9" lg="9" xl="9">
                             <div className="oknoSpotkanie">
                                 <p className="StyledPragraph">
                                     Oczekiwanie na rozpoczęcie spotkania:
@@ -96,7 +96,7 @@ class SecondMainContentComponentVer2 extends React.Component {
                                 </Row>
                             </Col>
                         </Col>
-                        <Col sm="4" md="4" lg="4" xl="4">
+                        <Col sm="2" md="2" lg="2" xl="2">
                             {<UsersListComponent uzytkownicy={this.state.user} />}
                         </Col>
                         {this.state.selectedMeetingId}
