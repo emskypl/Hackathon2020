@@ -14,13 +14,9 @@ class MainContentComponent extends React.Component {
             <>
                 <Row className="RowMainContentComponent">
                     <Col className="test" sm="6" md="6" lg="6" xl="6">
-                        <h1>Lorem Ipsum</h1>
-                        <h2>Lorem | Ipsum | Paris | Platynov</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mauris urna, congue non facilisis eget,
-                        commodo sit amet nunc. Fusce lectus libero, gravida vitae urna ac, mollis suscipit quam. Suspendisse sit
-                        amet tortor facilisis, molestie tortor vitae, ultrices eros. Cras laoreet massa mauris, non eleifend risus
-                        tristique non. Proin fringilla rutrum massa vel posuere. Nullam in nibh sollicitudin magna commodo faucibus
-                             tristique non. Proin fringilla rutrum massa vel posuere. Nullam in nibh sollicitudin magna commodo faucibus</p>
+                        <h1>Interaktywność</h1>
+                        <h2>Nauczanie | Planowanie | Skupienie</h2>
+                        <p>Intuicyjna i przejrzysta aplikacja wspomagająca prowadzenie lekcji dzięki intergracji z Microsoft Teams.</p>
                         <LoginButtonComponent metoda={this.props.metoda}/>
                         <img className="imgMicrosoftAccount" src={microsoftAccount}></img>
                     </Col>
