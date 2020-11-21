@@ -1,0 +1,60 @@
+.img{
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    width: 85%;
+}
+
+.RowMainContentComponent
+{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.test
+{
+    padding:12rem !important;
+}
+
+.test2
+{
+    margin: 0;
+    padding:0;
+}
+
+h1
+{
+    color: #2B2B2B;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 5rem !important;
+}
+
+h2
+{
+    color: #FF135D;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 1.95rem !important;
+}
+
+p
+{
+    color: #2B2B2B;
+    text-align: left;
+    font-size: 1.1rem;
+    letter-spacing: 0.04px;
+}
+
+.oknoSpotkanie{
+    height: 25rem;
+    padding: 2rem;
+}
+
+.StyledPragraph{
+    color: #6A67FF;
+    font-size: 2rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
