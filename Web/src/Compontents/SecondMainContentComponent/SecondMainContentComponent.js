@@ -4,8 +4,8 @@ import { Col, Row } from 'reactstrap';
 import contentPhoto from '../../Images/geometry-1023846_1920.jpg';
 import contentPhoto2 from '../../Images/school-1019989_1920.jpg';
 import { render } from 'react-dom';
-import Dots from 'react-activity/lib/Dots';
-import 'react-activity/lib/Dots/Dots.css';
+import 'react-activity/lib/Spinner/Spinner.css';
+import Spinner from 'react-activity/lib/Spinner';
 import MeetingComponent from '../MeetingComponent/MeetingComponent';
 import UsersListComponent from '../UsersListComponent/UsersListComponent'
 var tablica;
@@ -116,20 +116,20 @@ class SecondMainContentComponent extends React.Component {
             return (
                 <>
                     <Row>
-                        <Col className="mx-auto px-auto">
-                            <Dots color="#000" size="6em" />
+                        <Col sm="12" md="12" lg="12" xl="12">
+                            <div className="Spinner">
+                                <Spinner color="#5653FD" size="6em"/>
+                            </div>    
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
+                        <Col sm="12" md="12" lg="12" xl="12">
                             <p>Brak spotkań</p>
                         </Col>
                     </Row>
                 </>
             )
-
         }
-
     }
 }
 export default SecondMainContentComponent
