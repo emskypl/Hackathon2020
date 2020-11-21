@@ -18,7 +18,7 @@ class SecondMainContentComponentVer2 extends React.Component {
         this.state = { spotkania: [], czyPoint: true, text:"" };
     }
 changestatus(e){
-    console.log("test change" + JSON.stringify(e.target.id));
+    console.log("test change" + JSON.stringify(e.target));
     this.setState(state => ({
         czyPoint: true,
         text: e,
