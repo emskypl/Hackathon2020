@@ -108,6 +108,7 @@ export default class HomeScreen extends React.Component {
                   display: 'flex',
                   justifyContent: 'center',
                   alignContent: 'center',
+                  minHeight: 300
                 }}>
                 <Text
                   style={{width: '100%', textAlign: 'center', fontSize: 14}}>
