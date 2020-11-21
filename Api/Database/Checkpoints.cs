@@ -1,4 +1,7 @@
-﻿namespace HackApi.Database
+﻿using System;
+using System.Collections.Generic;
+
+namespace HackApi.Database
 {
     public partial class Checkpoints
     {
@@ -10,6 +13,8 @@
         public string CheckpointAnswerOptions { get; set; }
         public bool CheckpointIsEnded { get; set; }
         public int CheckpointOrdinalNumber { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string UserMail { get; set; }
 
         public virtual CheckpointAnswer CheckpointAnswer { get; set; }
         public virtual CheckpointType CheckpointType { get; set; }

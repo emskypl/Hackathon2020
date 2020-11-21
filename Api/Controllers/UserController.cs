@@ -1,8 +1,10 @@
 ﻿using HackApi.Database;
 using HackApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -31,14 +33,14 @@ namespace HackApi.Controllers
                 }
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
 
-                HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0//me/events");
+                HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0/me/events");
                 //HttpResponseMessage result = await client.GetAsync("https://graph.microsoft.com/v1.0//me/events/AAMkAGYwN2EyMTEwLTI1YTQtNDYzZC04Y2E3LTg4M2ZlMzkyMTY4YgBGAAAAAADAqOZAh5XmT5uUCZzwTgZnBwClIBnIR6xkQazNRRkdtxcUAAAAAAENAAClIBnIR6xkQazNRRkdtxcUAAFV_waLAAA=");
                 if (result.IsSuccessStatusCode)
                 {
                     response = await result.Content.ReadAsStringAsync();
                     var temperatures = JsonConvert.DeserializeObject<Temperatures>(response);
 
-                    foreach (var tem in temperatures.Value)
+                    foreach (var tem in temperatures.Value.Where(x => x.IsCancelled == false || !x.Subject.ToLower().Contains("canceled")))
                     {
                         meetings.Add(new MeetInformation() { MeetId = tem.Id, MeetSubject = tem.Subject, StartTime = tem.Start.DateTime, EndTime = tem.End.DateTime });
                     }
@@ -91,9 +93,30 @@ namespace HackApi.Controllers
             return meetingUsers;
         }
 
+        [HttpGet]
+        [Route("GetCheckpointsByMeetings/{meetingId}/{userMail}")]
+        public MeetingCheckpoint GetCheckpointsByMeetings(string meetingId, string userMail)
+        {
+            var response = string.Empty;
+            MeetingCheckpoint meetingCheckpoint = new MeetingCheckpoint();
+
+            using (HackathonContext db = new HackathonContext())
+            {
+                List<Checkpoints> checkpoints = db.Checkpoints.Include(x => x.CheckpointAnswer).Where(x => x.MeetingId == meetingId
+                                                                                                        && x.CreatedDate < DateTime.Now
+                                                                                                        && x.CheckpointAnswer.CheckpointAnswerId == 0
+                                                                                                        && x.UserMail == userMail).ToList();
+
+                meetingCheckpoint.Checkpoints = checkpoints;
+                meetingCheckpoint.MeetingId = meetingId;
+                return meetingCheckpoint;
+            }
+        }
+
+
         [HttpPost]
-        [Route("InsertNewCheckpoint/{meetingId}/{checkpointTitle}/{checkpointTypeId}/{checkpointAnswerOptions}")]
-        public void InsertNewCheckpoint(string meetingId, string checkpointTitle, int checkpointTypeId, string checkpointAnswerOptions = null)
+        [Route("InsertNewCheckpoint/{meetingId}/{checkpointTitle}/{checkpointTypeId}/{userMail}/{checkpointAnswerOptions}")]
+        public void InsertNewCheckpoint(string meetingId, string checkpointTitle, int checkpointTypeId, string userMail, string checkpointAnswerOptions = null)
         {
             using (HackathonContext db = new HackathonContext())
             {
@@ -116,7 +139,9 @@ namespace HackApi.Controllers
                         CheckpointAnswerOptions = checkpointTypeId == 1 ? checkpointAnswerOptions : "",
                         CheckpointOrdinalNumber = numberOfCheckpoints + 1,
                         CheckpointTitle = checkpointTitle,
-                        CheckpointTypeId = checkpointTypeId
+                        CheckpointTypeId = checkpointTypeId,
+                        CreatedDate = DateTime.Now.AddMinutes(1),
+                        UserMail = userMail
                     });
                 }
                 else
@@ -128,9 +153,10 @@ namespace HackApi.Controllers
                         CheckpointAnswerOptions = checkpointTypeId == 1 ? checkpointAnswerOptions : "",
                         CheckpointOrdinalNumber = 0,
                         CheckpointTitle = checkpointTitle,
-                        CheckpointTypeId = checkpointTypeId
+                        CheckpointTypeId = checkpointTypeId,
+                        CreatedDate = DateTime.Now.AddMinutes(1),
+                        UserMail = userMail
                     });
-
                 }
                 db.SaveChanges();
             }

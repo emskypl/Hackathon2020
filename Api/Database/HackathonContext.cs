@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HackApi.Database
 {
@@ -25,7 +27,7 @@ namespace HackApi.Database
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=94.23.91.119;Database=Hackathon;User Id=oszymanski;Password=oskar");
+                optionsBuilder.UseSqlServer("Data Source=94.23.91.119;Initial Catalog=Hackathon;User Id=mnogaj;Password=kajak13;");
             }
         }
 
@@ -57,7 +59,7 @@ namespace HackApi.Database
             modelBuilder.Entity<Checkpoints>(entity =>
             {
                 entity.HasKey(e => e.CheckpointId)
-                    .HasName("PK__Checkpoi__6C00DFE2092DDC04");
+                    .HasName("PK__Checkpoi__6C00DFE242FC92F8");
 
                 entity.Property(e => e.CheckpointAnswerOptions)
                     .HasMaxLength(100)
@@ -68,9 +70,16 @@ namespace HackApi.Database
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.MeetingId)
                     .IsRequired()
                     .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserMail)
+                    .IsRequired()
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.CheckpointAnswer)
