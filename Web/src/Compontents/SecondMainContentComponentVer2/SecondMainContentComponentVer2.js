@@ -15,15 +15,16 @@ var axios = require('axios');
 class SecondMainContentComponentVer2 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { user: [], spotkania: [], czyPoint: true, text:"", selectedMeetingId: undefined, };
+        this.state = { user: undefined, spotkania: [], czyPoint: true, text:"", selectedMeetingId: undefined, };
     }
     meetingClicked(id){
-    console.log("test change" + this.state.selectedMeetingId);
     axios.get('http://94.23.91.119:5000/User/CheckIsMeetingActiveAndGetUsers/'+id+'/true')
-    .then(res => {
-        const user = res.data;
-        this.setState({ user: user.attendees });
-        console.log(user.attendees)
+        .then(res => {
+        
+            let user = res.data;
+            if (user.attendees != null && user.attendees != undefined) {
+                this.setState({ user: user.attendees });
+            }
     })
 }
     componentDidMount() {
@@ -37,7 +38,6 @@ class SecondMainContentComponentVer2 extends React.Component {
           console.log(diff + ' ' + element.meetSubject);
                 });
                 this.setState({ spotkania });
-                console.log(spotkania)
             })
     }
     render() {
@@ -68,7 +68,7 @@ class SecondMainContentComponentVer2 extends React.Component {
                             </Row>
                         </Col>
                         <Col >
-                            <UsersListComponent uzytkownicy={this.state.user.attendees} />
+                            {this.state.user != undefined ? <UsersListComponent uzytkownicy={this.state.user} /> : <></>}
                         </Col>
                     </Row>
 

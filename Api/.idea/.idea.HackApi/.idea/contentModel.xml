@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="UserController.cs" t="Include" />
+      </e>
+      <e p="HackApi.csproj" t="IncludeRecursive" />
+      <e p="HackApi.sln" t="IncludeFlat" />
+      <e p="HackathonContext.cs" t="Include" />
+      <e p="Models" t="Include">
+        <e p="MeetInformation.cs" t="Include" />
+        <e p="MeetInformationJsonModels.cs" t="Include" />
+        <e p="MeetingUsers.cs" t="Include" />
+      </e>
+      <e p="MrkApiToken.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="HackApi.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/javascript/typings/react-dom/17.0.0/node_modules/@types/prop-types" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/javascript/typings/react-dom/17.0.0/node_modules/@types/react" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/javascript/typings/react-dom/17.0.0/node_modules/@types/react-dom" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/javascript/typings/react-dom/17.0.0/node_modules/csstype" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_HackApi.691357872.00" t="ExcludeRecursive" />
+  </component>
+</project>
