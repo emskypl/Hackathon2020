@@ -58,3 +58,10 @@ p
     margin-left: auto;
     margin-right: auto;
 }
+
+.Spinner
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
